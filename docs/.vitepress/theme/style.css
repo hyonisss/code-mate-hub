@@ -1,0 +1,18 @@
+/* Code Mate Hub 커스텀 테마 */
+
+:root {
+  --vp-c-brand-1: #534AB7;
+  --vp-c-brand-2: #6E66C8;
+  --vp-c-brand-3: #534AB7;
+  --vp-c-brand-soft: #EEEDFE;
+}
+
+.dark {
+  --vp-c-brand-1: #AFA9EC;
+  --vp-c-brand-2: #CECBF6;
+  --vp-c-brand-3: #AFA9EC;
+  --vp-c-brand-soft: #26215C;
+}
+
+/* 홈 페이지 사이드바 숨기기 */
+.VPHome { padding: 0 !important; }
