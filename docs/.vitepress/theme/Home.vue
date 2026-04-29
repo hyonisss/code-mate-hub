@@ -82,6 +82,29 @@ function formatDate(d: string) {
       <p>Code Mate 서비스 통합 안내소</p>
     </header>
 
+    <!-- 서비스 바로가기 -->
+    <section class="hub-section">
+      <h2>🚀 서비스 바로가기</h2>
+      <div class="hub-grid">
+        <div
+          v-for="svc in services"
+          :key="svc.id"
+          class="hub-card service-card"
+        >
+          <div class="service-meta">
+            <span class="dot" :style="{ background: svc.color }"></span>
+          </div>
+          <p class="service-name">{{ svc.name }}</p>
+          <p class="service-desc">{{ svc.desc }}</p>
+          <div class="service-links">
+            <a v-for="link in svc.links" :key="link.url" :href="link.url" target="_blank" rel="noopener">
+              {{ link.icon }} {{ link.label }} →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 공지사항 -->
     <section class="hub-section">
       <div class="hub-section-head">
@@ -109,29 +132,6 @@ function formatDate(d: string) {
           <span class="date">{{ formatDate(item.date) }}</span>
         </a>
         <p v-if="recentAnnouncements.length === 0" class="empty">아직 등록된 공지가 없습니다.</p>
-      </div>
-    </section>
-
-    <!-- 서비스 바로가기 -->
-    <section class="hub-section">
-      <h2>🚀 서비스 바로가기</h2>
-      <div class="hub-grid">
-        <div
-          v-for="svc in services"
-          :key="svc.id"
-          class="hub-card service-card"
-        >
-          <div class="service-meta">
-            <span class="dot" :style="{ background: svc.color }"></span>
-          </div>
-          <p class="service-name">{{ svc.name }}</p>
-          <p class="service-desc">{{ svc.desc }}</p>
-          <div class="service-links">
-            <a v-for="link in svc.links" :key="link.url" :href="link.url" target="_blank" rel="noopener">
-              {{ link.icon }} {{ link.label }} →
-            </a>
-          </div>
-        </div>
       </div>
     </section>
 
