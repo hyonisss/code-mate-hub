@@ -1,0 +1,73 @@
+backend:
+  name: github
+  repo: hyonisss/code-mate-hub
+  branch: main
+  auth_type: pkce
+  app_id: Ov23liKWaMCP3aInK1kK
+
+site_url: https://hyonisss.github.io/code-mate-hub/
+locale: ko
+
+media_folder: docs/public/uploads
+public_folder: /code-mate-hub/uploads
+
+collections:
+  - name: announcements
+    label: 공지사항
+    folder: docs/announcements
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    filter: { field: title, pattern: "^(?!.*index).*" }
+    fields:
+      - { name: title, label: 제목, widget: string }
+      - name: category
+        label: 카테고리
+        widget: select
+        options: [NEW, 공지, 가이드]
+      - { name: date, label: 날짜, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
+      - { name: body, label: 내용, widget: markdown }
+
+  - name: releases-code-mate
+    label: "Release Notes - Code Mate"
+    folder: docs/releases/code-mate
+    create: true
+    slug: "{{fields.version}}"
+    identifier_field: version
+    fields:
+      - { name: version, label: 버전, widget: string, hint: "예: v2.2.0" }
+      - { name: date, label: 날짜, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
+      - name: features
+        label: 주요 기능 요약 (홈 카드에 표시)
+        widget: list
+        field: { name: item, label: 기능, widget: string }
+      - { name: body, label: 내용, widget: markdown }
+
+  - name: releases-opencode
+    label: "Release Notes - OpenCode"
+    folder: docs/releases/opencode
+    create: true
+    slug: "{{fields.version}}"
+    identifier_field: version
+    fields:
+      - { name: version, label: 버전, widget: string, hint: "예: v1.5.0" }
+      - { name: date, label: 날짜, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
+      - name: features
+        label: 주요 기능 요약 (홈 카드에 표시)
+        widget: list
+        field: { name: item, label: 기능, widget: string }
+      - { name: body, label: 내용, widget: markdown }
+
+  - name: releases-roo
+    label: "Release Notes - Roo"
+    folder: docs/releases/roo
+    create: true
+    slug: "{{fields.version}}"
+    identifier_field: version
+    fields:
+      - { name: version, label: 버전, widget: string, hint: "예: v1.0.0" }
+      - { name: date, label: 날짜, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
+      - name: features
+        label: 주요 기능 요약 (홈 카드에 표시)
+        widget: list
+        field: { name: item, label: 기능, widget: string }
+      - { name: body, label: 내용, widget: markdown }
