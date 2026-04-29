@@ -2,8 +2,7 @@ backend:
   name: github
   repo: hyonisss/code-mate-hub
   branch: main
-  auth_type: pkce
-  app_id: Ov23liKWaMCP3aInK1kK
+  base_url: https://cms-auth.gyeun1212.workers.dev
 
 site_url: https://hyonisss.github.io/code-mate-hub/
 locale: ko
