@@ -79,7 +79,7 @@ function formatDate(d: string) {
     <!-- 헤더 -->
     <header class="hub-header">
       <h1>Code Mate Hub</h1>
-      <p>AI 코딩 어시스턴트 통합 안내소</p>
+      <p>Code Mate 서비스 통합 안내소</p>
     </header>
 
     <!-- 공지사항 -->
