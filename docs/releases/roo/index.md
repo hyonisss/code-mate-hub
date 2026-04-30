@@ -2,10 +2,10 @@
 
 <script setup>
 import { withBase } from 'vitepress'
-import { data as releases } from '../../.vitepress/releases.data'
+import { data as allReleases } from '../../.vitepress/releases.data'
 import { computed } from 'vue'
 
-const items = computed(() => releases.filter(r => r.service === 'roo'))
+const items = computed(() => allReleases.filter(r => r.service === 'roo' && r.lang === 'ko'))
 </script>
 
 <div v-for="rel in items" :key="rel.url" style="border: 1px solid var(--vp-c-divider); border-radius: 12px; padding: 16px 20px; margin: 12px 0;">

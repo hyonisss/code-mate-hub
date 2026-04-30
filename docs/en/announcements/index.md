@@ -1,16 +1,16 @@
-# 공지사항
+# Announcements
 
 <script setup>
 import { withBase } from 'vitepress'
-import { data as allAnnouncements } from '../.vitepress/announcements.data'
+import { data as allAnnouncements } from '../../.vitepress/announcements.data'
 
-const announcements = allAnnouncements.filter(a => a.lang === 'ko')
+const announcements = allAnnouncements.filter(a => a.lang === 'en')
 </script>
 
 <div v-for="item in announcements" :key="item.url" style="display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--vp-c-divider); align-items: center;">
   <span :style="{
-    background: item.category === 'NEW' ? '#FAEEDA' : item.category === '가이드' ? '#E1F5EE' : '#E6F1FB',
-    color: item.category === 'NEW' ? '#854F0B' : item.category === '가이드' ? '#085041' : '#0C447C',
+    background: item.category === 'NEW' ? '#FAEEDA' : item.category === 'Guide' ? '#E1F5EE' : '#E6F1FB',
+    color: item.category === 'NEW' ? '#854F0B' : item.category === 'Guide' ? '#085041' : '#0C447C',
     fontSize: '11px',
     padding: '2px 8px',
     borderRadius: '6px',

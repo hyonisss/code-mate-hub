@@ -3,18 +3,19 @@ import { createContentLoader } from 'vitepress'
 export interface Announcement {
   url: string
   title: string
-  category: 'NEW' | '공지' | '가이드'
+  category: string
   date: string // YYYY-MM-DD
+  lang: 'ko' | 'en'
 }
 
 declare const data: Announcement[]
 export { data }
 
-export default createContentLoader('announcements/*.md', {
+export default createContentLoader(['announcements/*.md', 'en/announcements/*.md'], {
   excerpt: false,
   transform(raw): Announcement[] {
     return raw
-      .filter((p) => p.url !== '/announcements/' && p.frontmatter.title)
+      .filter((p) => !p.url.endsWith('/') && p.frontmatter.title)
       .map((p) => ({
         url: p.url,
         title: p.frontmatter.title,
@@ -22,6 +23,7 @@ export default createContentLoader('announcements/*.md', {
         date: p.frontmatter.date instanceof Date
           ? p.frontmatter.date.toISOString().slice(0, 10)
           : String(p.frontmatter.date ?? ''),
+        lang: p.url.startsWith('/en/') ? 'en' : 'ko',
       }))
       .sort((a, b) => b.date.localeCompare(a.date))
   },

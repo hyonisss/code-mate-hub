@@ -1,74 +1,102 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { withBase } from 'vitepress'
-import { data as announcements } from '../announcements.data'
-import { data as releases } from '../releases.data'
+import { withBase, useData } from 'vitepress'
+import { data as allAnnouncements } from '../announcements.data'
+import { data as allReleases } from '../releases.data'
 
-// 홈에 노출할 최근 항목 수
+const { lang } = useData()
+const isEn = computed(() => lang.value === 'en-US')
+
 const RECENT_ANNOUNCEMENTS = 3
-const RECENT_RELEASES_PER_SERVICE = 1 // 서비스별 최신 1개씩
 
-const recentAnnouncements = computed(() => announcements.slice(0, RECENT_ANNOUNCEMENTS))
-
-const recentReleases = computed(() => {
-  const services = ['code-mate', 'opencode', 'roo'] as const
-  return services.map((s) => releases.find((r) => r.service === s)).filter(Boolean)
+const recentAnnouncements = computed(() => {
+  const locale = isEn.value ? 'en' : 'ko'
+  return allAnnouncements.filter(a => a.lang === locale).slice(0, RECENT_ANNOUNCEMENTS)
 })
 
-const services = [
+const recentReleases = computed(() => {
+  const locale = isEn.value ? 'en' : 'ko'
+  const services = ['code-mate', 'opencode', 'roo'] as const
+  return services
+    .map(s => allReleases.find(r => r.service === s && r.lang === locale))
+    .filter(Boolean)
+})
+
+const base = computed(() => isEn.value ? '/en' : '')
+
+const i18n = computed(() => isEn.value
+  ? {
+      subtitle: 'Code Mate Services Integration Hub',
+      serviceTitle: '🚀 Services',
+      announcementTitle: '📢 Announcements',
+      releaseTitle: '📋 Release Notes',
+      seeAll: 'See all →',
+      empty: 'No announcements yet.',
+    }
+  : {
+      subtitle: 'Code Mate 서비스 통합 안내소',
+      serviceTitle: '🚀 서비스 바로가기',
+      announcementTitle: '📢 공지사항',
+      releaseTitle: '📋 Release Notes',
+      seeAll: '전체 보기 →',
+      empty: '아직 등록된 공지가 없습니다.',
+    }
+)
+
+const services = computed(() => [
   {
     id: 'code-mate',
     name: 'Code Mate',
-    desc: '메인 코딩 어시스턴트',
+    desc: isEn.value ? 'Main coding assistant' : '메인 코딩 어시스턴트',
     color: '#534AB7',
     bg: '#EEEDFE',
     fg: '#3C3489',
-    isMain: true,
     links: [
-      { icon: '📖', label: 'Wiki 가이드', url: 'https://github.com/your-org/code-mate/wiki' },
+      { icon: '📖', label: isEn.value ? 'Wiki Guide' : 'Wiki 가이드', url: 'https://github.com/your-org/code-mate/wiki' },
       { icon: '🐛', label: 'VOC / Issues', url: 'https://github.com/your-org/code-mate/issues' },
     ],
   },
   {
     id: 'opencode',
     name: '+ OpenCode',
-    desc: 'OpenCode CLI 통합',
+    desc: isEn.value ? 'OpenCode CLI integration' : 'OpenCode CLI 통합',
     color: '#1D9E75',
     bg: '#E1F5EE',
     fg: '#085041',
     links: [
-      { icon: '🌐', label: '소개 페이지', url: 'https://github.com/your-org/code-mate-opencode' },
+      { icon: '🌐', label: isEn.value ? 'Introduction' : '소개 페이지', url: 'https://github.com/your-org/code-mate-opencode' },
       { icon: '🐛', label: 'VOC / Issues', url: 'https://github.com/your-org/code-mate-opencode/issues' },
     ],
   },
   {
     id: 'roo',
     name: '+ Roo',
-    desc: 'Roo Code 통합',
+    desc: isEn.value ? 'Roo Code integration' : 'Roo Code 통합',
     color: '#D85A30',
     bg: '#FAECE7',
     fg: '#712B13',
     links: [
-      { icon: '🌐', label: '소개 페이지', url: 'https://github.com/your-org/code-mate-roo' },
+      { icon: '🌐', label: isEn.value ? 'Introduction' : '소개 페이지', url: 'https://github.com/your-org/code-mate-roo' },
       { icon: '🐛', label: 'VOC / Issues', url: 'https://github.com/your-org/code-mate-roo/issues' },
     ],
   },
-]
+])
 
 const categoryStyle: Record<string, { bg: string; fg: string }> = {
-  NEW: { bg: '#FAEEDA', fg: '#854F0B' },
-  공지: { bg: '#E6F1FB', fg: '#0C447C' },
-  가이드: { bg: '#E1F5EE', fg: '#085041' },
+  NEW:    { bg: '#FAEEDA', fg: '#854F0B' },
+  '공지': { bg: '#E6F1FB', fg: '#0C447C' },
+  '가이드': { bg: '#E1F5EE', fg: '#085041' },
+  Notice: { bg: '#E6F1FB', fg: '#0C447C' },
+  Guide:  { bg: '#E1F5EE', fg: '#085041' },
 }
 
 const releaseTagStyle: Record<string, { bg: string; fg: string; label: string }> = {
   'code-mate': { bg: '#EEEDFE', fg: '#3C3489', label: 'Code Mate' },
-  'opencode': { bg: '#E1F5EE', fg: '#085041', label: 'OpenCode' },
-  'roo': { bg: '#FAECE7', fg: '#712B13', label: 'Roo' },
+  'opencode':  { bg: '#E1F5EE', fg: '#085041', label: 'OpenCode' },
+  'roo':       { bg: '#FAECE7', fg: '#712B13', label: 'Roo' },
 }
 
 function formatDate(d: string) {
-  // 2026-04-29 → 04.29
   if (!d || d.length < 10) return d
   return `${d.slice(5, 7)}.${d.slice(8, 10)}`
 }
@@ -79,12 +107,12 @@ function formatDate(d: string) {
     <!-- 헤더 -->
     <header class="hub-header">
       <h1>Code Mate Hub</h1>
-      <p>Code Mate 서비스 통합 안내소</p>
+      <p>{{ i18n.subtitle }}</p>
     </header>
 
     <!-- 서비스 바로가기 -->
     <section class="hub-section">
-      <h2>🚀 서비스 바로가기</h2>
+      <h2>{{ i18n.serviceTitle }}</h2>
       <div class="hub-grid">
         <div
           v-for="svc in services"
@@ -108,8 +136,8 @@ function formatDate(d: string) {
     <!-- 공지사항 -->
     <section class="hub-section">
       <div class="hub-section-head">
-        <h2>📢 공지사항</h2>
-        <a :href="withBase('/announcements/')" class="see-all">전체 보기 →</a>
+        <h2>{{ i18n.announcementTitle }}</h2>
+        <a :href="withBase(base + '/announcements/')" class="see-all">{{ i18n.seeAll }}</a>
       </div>
       <div class="hub-card hub-list">
         <a
@@ -131,15 +159,15 @@ function formatDate(d: string) {
           <span class="title">{{ item.title }}</span>
           <span class="date">{{ formatDate(item.date) }}</span>
         </a>
-        <p v-if="recentAnnouncements.length === 0" class="empty">아직 등록된 공지가 없습니다.</p>
+        <p v-if="recentAnnouncements.length === 0" class="empty">{{ i18n.empty }}</p>
       </div>
     </section>
 
     <!-- Release Notes -->
     <section class="hub-section">
       <div class="hub-section-head">
-        <h2>📋 Release Notes</h2>
-        <a :href="withBase('/releases/code-mate/')" class="see-all">전체 보기 →</a>
+        <h2>{{ i18n.releaseTitle }}</h2>
+        <a :href="withBase(base + '/releases/code-mate/')" class="see-all">{{ i18n.seeAll }}</a>
       </div>
       <div class="hub-grid">
         <a
@@ -269,9 +297,6 @@ function formatDate(d: string) {
   padding: 16px 20px;
   display: flex;
   flex-direction: column;
-}
-.service-card.is-main {
-  border: 2px solid var(--vp-c-brand-1);
 }
 .service-meta {
   display: flex;

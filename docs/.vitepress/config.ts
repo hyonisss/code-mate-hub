@@ -1,14 +1,8 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'Code Mate Hub',
-  description: 'AI 코딩 어시스턴트 통합 안내소',
-  lang: 'ko-KR',
-
-  // GitHub Pages 배포 시 repo 이름에 맞게 변경하세요
-  // 예: https://<user>.github.io/code-mate-hub/ → '/code-mate-hub/'
+  appearance: false,
   base: '/code-mate-hub/',
-
   cleanUrls: true,
   lastUpdated: true,
 
@@ -16,52 +10,80 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/code-mate-hub/favicon.svg', type: 'image/svg+xml' }],
   ],
 
+  locales: {
+    root: {
+      label: '한국어',
+      lang: 'ko-KR',
+      title: 'Code Mate Hub',
+      description: 'Code Mate 서비스 통합 안내소',
+      themeConfig: {
+        nav: [
+          { text: '홈', link: '/' },
+          { text: '공지사항', link: '/announcements/' },
+          {
+            text: 'Release Notes',
+            items: [
+              { text: 'Code Mate', link: '/releases/code-mate/' },
+              { text: 'Code Mate with OpenCode', link: '/releases/opencode/' },
+              { text: 'Code Mate with Roo', link: '/releases/roo/' },
+            ],
+          },
+        ],
+        sidebar: {
+          '/announcements/': [
+            { text: '공지사항', items: [{ text: '전체 보기', link: '/announcements/' }] },
+          ],
+          '/releases/': [
+            { text: 'Code Mate', items: [{ text: '전체 보기', link: '/releases/code-mate/' }] },
+            { text: 'Code Mate with OpenCode', items: [{ text: '전체 보기', link: '/releases/opencode/' }] },
+            { text: 'Code Mate with Roo', items: [{ text: '전체 보기', link: '/releases/roo/' }] },
+          ],
+        },
+        docFooter: { prev: '이전', next: '다음' },
+        outline: { label: '목차' },
+        lastUpdatedText: '최근 업데이트',
+        returnToTopLabel: '맨 위로',
+        sidebarMenuLabel: '메뉴',
+      },
+    },
+    en: {
+      label: 'English',
+      lang: 'en-US',
+      title: 'Code Mate Hub',
+      description: 'Code Mate Services Integration Hub',
+      themeConfig: {
+        nav: [
+          { text: 'Home', link: '/en/' },
+          { text: 'Announcements', link: '/en/announcements/' },
+          {
+            text: 'Release Notes',
+            items: [
+              { text: 'Code Mate', link: '/en/releases/code-mate/' },
+              { text: 'Code Mate with OpenCode', link: '/en/releases/opencode/' },
+              { text: 'Code Mate with Roo', link: '/en/releases/roo/' },
+            ],
+          },
+        ],
+        sidebar: {
+          '/en/announcements/': [
+            { text: 'Announcements', items: [{ text: 'View all', link: '/en/announcements/' }] },
+          ],
+          '/en/releases/': [
+            { text: 'Code Mate', items: [{ text: 'View all', link: '/en/releases/code-mate/' }] },
+            { text: 'Code Mate with OpenCode', items: [{ text: 'View all', link: '/en/releases/opencode/' }] },
+            { text: 'Code Mate with Roo', items: [{ text: 'View all', link: '/en/releases/roo/' }] },
+          ],
+        },
+        docFooter: { prev: 'Previous', next: 'Next' },
+        outline: { label: 'On this page' },
+        lastUpdatedText: 'Last updated',
+        returnToTopLabel: 'Back to top',
+        sidebarMenuLabel: 'Menu',
+      },
+    },
+  },
+
   themeConfig: {
     logo: { src: '/logo.svg', width: 24, height: 24 },
-
-    nav: [
-      { text: '홈', link: '/' },
-      { text: '공지사항', link: '/announcements/' },
-      {
-        text: 'Release Notes',
-        items: [
-          { text: 'Code Mate', link: '/releases/code-mate/' },
-          { text: 'Code Mate with OpenCode', link: '/releases/opencode/' },
-          { text: 'Code Mate with Roo', link: '/releases/roo/' },
-        ],
-      },
-    ],
-
-    sidebar: {
-      '/announcements/': [
-        {
-          text: '공지사항',
-          items: [{ text: '전체 보기', link: '/announcements/' }],
-        },
-      ],
-      '/releases/': [
-        {
-          text: 'Code Mate',
-          items: [{ text: '전체 보기', link: '/releases/code-mate/' }],
-        },
-        {
-          text: 'Code Mate with OpenCode',
-          items: [{ text: '전체 보기', link: '/releases/opencode/' }],
-        },
-        {
-          text: 'Code Mate with Roo',
-          items: [{ text: '전체 보기', link: '/releases/roo/' }],
-        },
-      ],
-    },
-
-    docFooter: { prev: '이전', next: '다음' },
-    outline: { label: '목차' },
-    lastUpdatedText: '최근 업데이트',
-    returnToTopLabel: '맨 위로',
-    sidebarMenuLabel: '메뉴',
-    darkModeSwitchLabel: '테마',
-    lightModeSwitchTitle: '라이트 모드',
-    darkModeSwitchTitle: '다크 모드',
   },
 })
