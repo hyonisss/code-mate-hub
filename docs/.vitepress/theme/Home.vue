@@ -4,8 +4,8 @@ import { withBase, useData } from 'vitepress'
 import { data as allAnnouncements } from '../announcements.data'
 import { data as allReleases } from '../releases.data'
 
-const { lang } = useData()
-const isEn = computed(() => lang.value === 'en-US')
+const { page } = useData()
+const isEn = computed(() => page.value.relativePath.startsWith('en/'))
 
 const RECENT_ANNOUNCEMENTS = 3
 
