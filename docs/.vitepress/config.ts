@@ -20,14 +20,7 @@ export default defineConfig({
         nav: [
           { text: '홈', link: '/' },
           { text: '공지사항', link: '/announcements/' },
-          {
-            text: 'Release Notes',
-            items: [
-              { text: 'Code Mate', link: '/releases/code-mate/' },
-              { text: 'Code Mate with OpenCode', link: '/releases/opencode/' },
-              { text: 'Code Mate with Roo', link: '/releases/roo/' },
-            ],
-          },
+          { text: 'Release Notes', link: '/releases/code-mate/' },
         ],
         sidebar: {
           '/announcements/': [
@@ -55,14 +48,7 @@ export default defineConfig({
         nav: [
           { text: 'Home', link: '/en/' },
           { text: 'Announcements', link: '/en/announcements/' },
-          {
-            text: 'Release Notes',
-            items: [
-              { text: 'Code Mate', link: '/en/releases/code-mate/' },
-              { text: 'Code Mate with OpenCode', link: '/en/releases/opencode/' },
-              { text: 'Code Mate with Roo', link: '/en/releases/roo/' },
-            ],
-          },
+          { text: 'Release Notes', link: '/en/releases/code-mate/' },
         ],
         sidebar: {
           '/en/announcements/': [
