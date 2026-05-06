@@ -1,6 +1,6 @@
 ---
 title: Roo 사용 가이드 업데이트 — 신규 모델 추가
-category: 가이드
+category: Roo
 date: 2026-04-22
 ---
 

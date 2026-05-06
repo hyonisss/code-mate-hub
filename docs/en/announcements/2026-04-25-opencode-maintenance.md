@@ -1,6 +1,6 @@
 ---
 title: OpenCode Scheduled Maintenance (5/3 02:00~04:00)
-category: Notice
+category: OpenCode
 date: 2026-04-25
 ---
 

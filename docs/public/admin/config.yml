@@ -22,7 +22,7 @@ collections:
       - name: category
         label: 카테고리
         widget: select
-        options: [NEW, 공지, 가이드]
+        options: [Code Mate, OpenCode, Roo]
       - { name: date, label: 날짜, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
       - { name: body, label: 내용, widget: markdown }
 

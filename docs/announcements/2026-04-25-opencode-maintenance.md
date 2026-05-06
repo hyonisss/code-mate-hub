@@ -1,6 +1,6 @@
 ---
 title: OpenCode 정기 점검 안내 (5/3 02:00~04:00)
-category: 공지
+category: OpenCode
 date: 2026-04-25
 ---
 

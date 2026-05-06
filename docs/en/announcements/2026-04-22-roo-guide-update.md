@@ -1,6 +1,6 @@
 ---
 title: Roo Usage Guide Update — New Models Added
-category: Guide
+category: Roo
 date: 2026-04-22
 ---
 

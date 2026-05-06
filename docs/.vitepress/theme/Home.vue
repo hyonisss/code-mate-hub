@@ -83,11 +83,9 @@ const services = computed(() => [
 ])
 
 const categoryStyle: Record<string, { bg: string; fg: string }> = {
-  NEW:    { bg: '#FAEEDA', fg: '#854F0B' },
-  '공지': { bg: '#E6F1FB', fg: '#0C447C' },
-  '가이드': { bg: '#E1F5EE', fg: '#085041' },
-  Notice: { bg: '#E6F1FB', fg: '#0C447C' },
-  Guide:  { bg: '#E1F5EE', fg: '#085041' },
+  'Code Mate': { bg: '#EEEDFE', fg: '#3C3489' },
+  'OpenCode':  { bg: '#E1F5EE', fg: '#085041' },
+  'Roo':       { bg: '#FAECE7', fg: '#712B13' },
 }
 
 const releaseTagStyle: Record<string, { bg: string; fg: string; label: string }> = {
