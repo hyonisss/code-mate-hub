@@ -47,7 +47,7 @@ const services = computed(() => [
   {
     id: 'code-mate',
     name: 'Code Mate',
-    desc: isEn.value ? 'Main coding assistant' : '메인 코딩 어시스턴트',
+    desc: isEn.value ? 'AI Coding Assistant for free use' : '자유롭게 사용하는 AI Coding Assistant',
     color: '#534AB7',
     bg: '#EEEDFE',
     fg: '#3C3489',
@@ -59,7 +59,7 @@ const services = computed(() => [
   {
     id: 'opencode',
     name: 'OpenCode',
-    desc: isEn.value ? 'OpenCode CLI integration' : 'OpenCode CLI 통합',
+    desc: isEn.value ? 'AI Coding Agent based on open-source OpenCode' : '오픈 소스 OpenCode 기반 AI Coding Agent',
     color: '#1D9E75',
     bg: '#E1F5EE',
     fg: '#085041',
@@ -71,7 +71,7 @@ const services = computed(() => [
   {
     id: 'roo',
     name: 'Roo',
-    desc: isEn.value ? 'Roo Code integration' : 'Roo Code 통합',
+    desc: isEn.value ? 'AI Coding Agent supporting the full development lifecycle' : '개발 전반을 지원하는 AI Coding Agent',
     color: '#D85A30',
     bg: '#FAECE7',
     fg: '#712B13',
@@ -104,8 +104,8 @@ function formatDate(d: string) {
   <div class="hub-page">
     <!-- 헤더 -->
     <header class="hub-header">
-      <h1>Code Mate Hub</h1>
-      <p>{{ i18n.subtitle }}</p>
+      <h1>Code Mate</h1>
+      <p>Code Mate 서비스 통합 안내소</p>
     </header>
 
     <!-- 서비스 바로가기 -->
