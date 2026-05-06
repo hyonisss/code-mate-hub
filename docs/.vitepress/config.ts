@@ -17,11 +17,7 @@ export default defineConfig({
       title: 'Code Mate Hub',
       description: 'Code Mate 서비스 통합 안내소',
       themeConfig: {
-        nav: [
-          { text: '홈', link: '/' },
-          { text: '공지사항', link: '/announcements/' },
-          { text: 'Release Notes', link: '/releases/code-mate/' },
-        ],
+        nav: [],
         sidebar: {
           '/announcements/': [
             { text: '공지사항', items: [{ text: '전체 보기', link: '/announcements/' }] },
@@ -45,11 +41,7 @@ export default defineConfig({
       title: 'Code Mate Hub',
       description: 'Code Mate Services Integration Hub',
       themeConfig: {
-        nav: [
-          { text: 'Home', link: '/en/' },
-          { text: 'Announcements', link: '/en/announcements/' },
-          { text: 'Release Notes', link: '/en/releases/code-mate/' },
-        ],
+        nav: [],
         sidebar: {
           '/en/announcements/': [
             { text: 'Announcements', items: [{ text: 'View all', link: '/en/announcements/' }] },
