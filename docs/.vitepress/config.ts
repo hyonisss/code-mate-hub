@@ -17,7 +17,7 @@ export default defineConfig({
       title: 'Code Mate Hub',
       description: 'Code Mate 서비스 통합 안내소',
       themeConfig: {
-        nav: [],
+        nav: [{ text: 'Wadiz', link: '/wadiz' }],
         sidebar: {
           '/announcements/': [
             { text: '공지사항', items: [{ text: '전체 보기', link: '/announcements/' }] },
@@ -41,7 +41,7 @@ export default defineConfig({
       title: 'Code Mate Hub',
       description: 'Code Mate Services Integration Hub',
       themeConfig: {
-        nav: [],
+        nav: [{ text: 'Wadiz', link: '/wadiz' }],
         sidebar: {
           '/en/announcements/': [
             { text: 'Announcements', items: [{ text: 'View all', link: '/en/announcements/' }] },
