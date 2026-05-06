@@ -58,7 +58,7 @@ const services = computed(() => [
   },
   {
     id: 'opencode',
-    name: '+ OpenCode',
+    name: 'OpenCode',
     desc: isEn.value ? 'OpenCode CLI integration' : 'OpenCode CLI 통합',
     color: '#1D9E75',
     bg: '#E1F5EE',
@@ -70,7 +70,7 @@ const services = computed(() => [
   },
   {
     id: 'roo',
-    name: '+ Roo',
+    name: 'Roo',
     desc: isEn.value ? 'Roo Code integration' : 'Roo Code 통합',
     color: '#D85A30',
     bg: '#FAECE7',
