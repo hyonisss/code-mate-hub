@@ -52,7 +52,7 @@ const services = computed(() => [
     bg: '#EEEDFE',
     fg: '#3C3489',
     links: [
-      { icon: '📖', label: isEn.value ? 'Wiki Guide' : 'Wiki 가이드', url: 'https://github.com/your-org/code-mate/wiki' },
+      { icon: '🌐', label: isEn.value ? 'Introduction' : '소개 페이지', url: 'https://github.com/your-org/code-mate/wiki' },
       { icon: '🐛', label: 'VOC / Issues', url: 'https://github.com/your-org/code-mate/issues' },
     ],
   },
