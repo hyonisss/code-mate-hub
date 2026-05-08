@@ -31,6 +31,7 @@ const i18n = computed(() => isEn.value
       announcementTitle: '📢 Announcements',
       releaseTitle: '📋 Release Notes',
       seeAll: 'See all →',
+      viewAll: 'View all →',
       empty: 'No announcements yet.',
     }
   : {
@@ -39,6 +40,7 @@ const i18n = computed(() => isEn.value
       announcementTitle: '📢 공지사항',
       releaseTitle: '📋 Release Notes',
       seeAll: '전체 보기 →',
+      viewAll: '전체 목록 →',
       empty: '아직 등록된 공지가 없습니다.',
     }
 )
@@ -163,15 +165,11 @@ function formatDate(d: string) {
 
     <!-- Release Notes -->
     <section class="hub-section">
-      <div class="hub-section-head">
-        <h2>{{ i18n.releaseTitle }}</h2>
-        <a :href="withBase(base + '/releases/code-mate/')" class="see-all">{{ i18n.seeAll }}</a>
-      </div>
+      <h2>{{ i18n.releaseTitle }}</h2>
       <div class="hub-grid">
-        <a
+        <div
           v-for="rel in recentReleases"
           :key="rel!.url"
-          :href="withBase(rel!.url)"
           class="hub-card release-card"
         >
           <div>
@@ -186,13 +184,16 @@ function formatDate(d: string) {
             </span>
           </div>
           <div class="release-head">
-            <span class="version">{{ rel!.version }}</span>
+            <a :href="withBase(rel!.url)" class="version">{{ rel!.version }}</a>
             <span class="date">{{ formatDate(rel!.date) }}</span>
           </div>
           <ul class="features">
             <li v-for="f in rel!.features.slice(0, 3)" :key="f">{{ f }}</li>
           </ul>
-        </a>
+          <a :href="withBase(base + '/releases/' + rel!.service + '/')" class="view-all-link">
+            {{ i18n.viewAll }}
+          </a>
+        </div>
       </div>
     </section>
   </div>
@@ -333,12 +334,10 @@ function formatDate(d: string) {
 
 .release-card {
   padding: 16px 20px;
-  text-decoration: none;
   color: var(--vp-c-text-1);
   display: flex;
   flex-direction: column;
   gap: 10px;
-  transition: border-color 0.15s;
 }
 .release-card:hover { border-color: var(--vp-c-brand-1); }
 .release-head {
@@ -346,7 +345,8 @@ function formatDate(d: string) {
   align-items: baseline;
   justify-content: space-between;
 }
-.version { font-size: 14px; font-weight: 600; }
+.version { font-size: 14px; font-weight: 600; color: var(--vp-c-text-1); text-decoration: none; }
+.version:hover { color: var(--vp-c-brand-1); }
 .release-card .date { font-size: 11px; color: var(--vp-c-text-3); }
 .features {
   margin: 0;
@@ -356,4 +356,16 @@ function formatDate(d: string) {
   line-height: 1.7;
 }
 .features li { margin: 0; }
+.view-all-link {
+  margin-top: auto;
+  font-size: 13px;
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  padding: 6px 10px;
+  background: var(--vp-c-bg-soft);
+  border-radius: 6px;
+  text-align: center;
+  transition: background 0.15s;
+}
+.view-all-link:hover { background: var(--vp-c-bg-mute); }
 </style>
