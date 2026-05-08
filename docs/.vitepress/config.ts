@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  appearance: false,
+  appearance: true,
   base: '/code-mate-hub/',
   cleanUrls: true,
   lastUpdated: true,
